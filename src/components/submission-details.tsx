@@ -14,6 +14,7 @@ import { RejectionDialog } from "./rejection-dialog";
 import { Separator } from "@/components/ui/separator";
 import { format } from "date-fns";
 import { StatusBadge } from "./status-badge";
+import { Undo2 } from "lucide-react";
 
 interface SubmissionDetailsProps {
   submission: PodcastSubmission;
@@ -193,7 +194,8 @@ export default function SubmissionDetails({
               className="w-full"
               disabled={!isActionable}
             >
-              Re-review
+              <Undo2 />
+              Send to Review
             </Button>
           </CardFooter>
         )}
