@@ -42,6 +42,10 @@ export default function SubmissionDetails({
     setIsRejecting(false);
   };
 
+  const handleReReview = () => {
+    onUpdateStatus(submission.id, "pending");
+  };
+
   const isPending = submission.status === "pending";
 
   return (
@@ -69,6 +73,17 @@ export default function SubmissionDetails({
           <audio controls src={submission.audioUrl} className="w-full h-10">
             Your browser does not support the audio element.
           </audio>
+
+          {submission.status === "rejected" && submission.rejectionReason && (
+            <div>
+              <h3 className="font-semibold text-destructive text-xs uppercase tracking-wider">
+                Rejection Reason
+              </h3>
+              <p className="text-foreground/80">
+                {submission.rejectionReason}
+              </p>
+            </div>
+          )}
 
           <Separator />
 
@@ -104,6 +119,17 @@ export default function SubmissionDetails({
               className="w-full text-destructive border-destructive hover:bg-destructive/10 hover:text-destructive"
             >
               Reject
+            </Button>
+          </CardFooter>
+        )}
+        {submission.status === "rejected" && (
+          <CardFooter>
+            <Button
+              onClick={handleReReview}
+              variant="secondary"
+              className="w-full"
+            >
+              Re-review
             </Button>
           </CardFooter>
         )}
