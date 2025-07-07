@@ -1,41 +1,44 @@
 export function Logo() {
   return (
     <svg
-      height="36"
-      viewBox="0 0 200 36"
+      width="140"
+      height="26"
+      viewBox="0 0 140 26"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
       <path
-        d="M21.5 30V11.25C21.5 5.03756 26.3208 0 32.25 0H33.75C39.6792 0 44.5 5.03756 44.5 11.25V18"
+        d="M14.0302 21.5V9.69231C14.0302 4.34789 18.2381 0 23.4302 0H24.6925C29.8846 0 34.0925 4.34789 34.0925 9.69231V14.5"
         stroke="hsl(var(--primary))"
-        strokeWidth="5"
+        strokeWidth="3.5"
         strokeLinecap="round"
       />
       <path
-        d="M41 15.5C41 22.6716 46.5784 28.5 53.75 28.5C60.9216 28.5 66.5 22.6716 66.5 15.5C66.5 8.32843 60.9216 2.5 53.75 2.5"
+        d="M31.2268 12.6346C31.2268 18.3995 35.8845 23.25 41.4968 23.25C47.109 23.25 51.7668 18.3995 51.7668 12.6346C51.7668 6.8697 47.109 2 41.4968 2"
         stroke="hsl(var(--accent))"
-        strokeWidth="5"
+        strokeWidth="3.5"
         strokeLinecap="round"
       />
-       <text
-        x="75"
-        y="12"
+      <text
+        x="58"
+        y="10"
         fontFamily="Inter, sans-serif"
-        fontSize="14"
+        fontSize="12"
         fontWeight="500"
         fill="hsl(var(--primary))"
+        letterSpacing="0.05em"
       >
         NUSHIFT
       </text>
       <text
-        x="75"
-        y="29"
+        x="58"
+        y="23"
         fontFamily="Inter, sans-serif"
-        fontSize="14"
+        fontSize="12"
         fontWeight="500"
         fill="hsl(var(--accent))"
+        letterSpacing="0.05em"
       >
         CONNECT
       </text>
