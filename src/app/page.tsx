@@ -31,6 +31,8 @@ import SubmissionDetails from "@/components/submission-details";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Search } from "lucide-react";
 
 export default function Home() {
   const [submissions, setSubmissions] =
@@ -42,6 +44,7 @@ export default function Home() {
   const [statusFilter, setStatusFilter] = useState<SubmissionStatus | "all">(
     "all"
   );
+  const [searchTerm, setSearchTerm] = useState("");
   const { toast } = useToast();
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
@@ -122,9 +125,16 @@ export default function Home() {
     }
   };
 
-  const filteredSubmissions = submissions.filter(
-    (s) => statusFilter === "all" || s.status === statusFilter
-  );
+  const filteredSubmissions = submissions
+    .filter((s) => statusFilter === "all" || s.status === statusFilter)
+    .filter((s) => {
+      const term = searchTerm.toLowerCase();
+      return (
+        s.title.toLowerCase().includes(term) ||
+        s.description.toLowerCase().includes(term) ||
+        s.submitter.name.toLowerCase().includes(term)
+      );
+    });
 
   const totalPages = Math.ceil(filteredSubmissions.length / itemsPerPage);
   const paginatedSubmissions = filteredSubmissions.slice(
@@ -160,9 +170,21 @@ export default function Home() {
       <main className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-8 p-4 md:p-8 container mx-auto">
         <div className="lg:col-span-2">
           <Card>
-            <CardHeader className="flex flex-row justify-between items-center">
+            <CardHeader className="flex flex-wrap items-center justify-between gap-4">
               <h2 className="text-2xl font-bold text-primary">Podcasts</h2>
-              <div className="flex items-center gap-4">
+              <div className="flex flex-wrap items-center justify-end gap-4">
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                  <Input
+                    placeholder="Search..."
+                    value={searchTerm}
+                    onChange={(e) => {
+                      setSearchTerm(e.target.value);
+                      setCurrentPage(1);
+                    }}
+                    className="w-full pl-9 sm:w-auto md:w-[250px]"
+                  />
+                </div>
                 <div className="flex items-center gap-2">
                   <span className="text-sm font-medium text-muted-foreground">
                     Panelist:
