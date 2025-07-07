@@ -61,7 +61,7 @@ export default function SubmissionDetails({
     <>
       <Card className="sticky top-28">
         <CardHeader>
-          <CardTitle className="text-xl font-bold leading-tight text-primary">
+          <CardTitle className="text-xl font-bold leading-tight">
             {submission.title}
           </CardTitle>
         </CardHeader>
