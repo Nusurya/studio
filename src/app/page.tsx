@@ -31,6 +31,7 @@ import SubmissionDetails from "@/components/submission-details";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
+import { UserCircle } from "lucide-react";
 
 export default function Home() {
   const [submissions, setSubmissions] =
@@ -130,8 +131,6 @@ export default function Home() {
   );
 
   useEffect(() => {
-    // When the visible submissions change (due to pagination or filtering),
-    // ensure a submission is always selected if the list is not empty.
     if (paginatedSubmissions.length > 0) {
       if (
         !selectedSubmission ||
@@ -140,7 +139,6 @@ export default function Home() {
         setSelectedSubmission(paginatedSubmissions[0]);
       }
     } else {
-      // This handles case where current page is empty after filtering/updates
       if (currentPage > 1) {
         setCurrentPage(1);
       } else {
@@ -156,17 +154,31 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Header
-        moderators={moderators}
-        currentModerator={currentModerator}
-        onModeratorChange={handleModeratorChange}
-      />
+      <Header />
       <main className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-8 p-4 md:p-8 container mx-auto">
         <div className="lg:col-span-2">
           <Card>
             <CardHeader className="flex flex-row justify-between items-center">
               <h2 className="text-2xl font-bold">Podcasts</h2>
-              <div className="flex gap-4">
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2">
+                  <UserCircle className="text-muted-foreground" />
+                  <Select
+                    value={currentModerator?.id}
+                    onValueChange={handleModeratorChange}
+                  >
+                    <SelectTrigger className="w-[180px]">
+                      <SelectValue placeholder="Select Moderator" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {moderators.map((mod) => (
+                        <SelectItem key={mod.id} value={mod.id}>
+                          {mod.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
                 <Select
                   value={statusFilter}
                   onValueChange={(v) => handleFilterChange(v as any)}
@@ -194,6 +206,9 @@ export default function Home() {
                       </TableHead>
                       <TableHead className="hidden sm:table-cell">
                         Upload Date
+                      </TableHead>
+                      <TableHead className="hidden md:table-cell">
+                        Moderator
                       </TableHead>
                       <TableHead>Status</TableHead>
                     </TableRow>
@@ -226,6 +241,12 @@ export default function Home() {
                                 "PPp"
                               )
                             : null}
+                        </TableCell>
+                        <TableCell className="hidden md:table-cell">
+                          {submission.statusHistory
+                            ?.slice()
+                            .reverse()
+                            .find((h) => h.moderator)?.moderator?.name ?? "N/A"}
                         </TableCell>
                         <TableCell>
                           <StatusBadge status={submission.status} />
