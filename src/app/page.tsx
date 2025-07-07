@@ -40,6 +40,11 @@ export default function Home() {
   const { toast } = useToast();
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
 
   const handleUpdateStatus = (
     id: string,
@@ -166,7 +171,12 @@ export default function Home() {
                           {submission.submitter.name}
                         </TableCell>
                         <TableCell className="hidden sm:table-cell">
-                          {format(new Date(submission.submissionDate), "PPp")}
+                          {hasMounted
+                            ? format(
+                                new Date(submission.submissionDate),
+                                "PPp"
+                              )
+                            : null}
                         </TableCell>
                         <TableCell>
                           <StatusBadge status={submission.status} />

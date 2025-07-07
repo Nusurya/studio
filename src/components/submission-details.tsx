@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { PodcastSubmission, SubmissionStatus } from "@/lib/types";
 import {
   Card,
@@ -28,6 +28,11 @@ export default function SubmissionDetails({
   onUpdateStatus,
 }: SubmissionDetailsProps) {
   const [isRejecting, setIsRejecting] = useState(false);
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
 
   const handleApprove = () => {
     onUpdateStatus(submission.id, "approved");
@@ -103,7 +108,9 @@ export default function SubmissionDetails({
                 Submission Date
               </h3>
               <p className="text-foreground/80">
-                {format(new Date(submission.submissionDate), "PPp")}
+                {hasMounted
+                  ? format(new Date(submission.submissionDate), "PPp")
+                  : null}
               </p>
             </div>
           </div>
