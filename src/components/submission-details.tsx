@@ -55,8 +55,6 @@ export default function SubmissionDetails({
     onUpdateStatus(submission.id, "pending");
   };
 
-  const isPending = submission.status === "pending";
-
   return (
     <>
       <Card className="sticky top-28">
@@ -148,7 +146,9 @@ export default function SubmissionDetails({
               <h3 className="font-semibold text-primary text-xs uppercase tracking-wider">
                 Uploader
               </h3>
-              <p className="text-muted-foreground">{submission.submitter.name}</p>
+              <p className="text-muted-foreground">
+                {submission.submitter.name}
+              </p>
               <p className="text-xs text-muted-foreground">
                 ID: {submission.id}
               </p>
@@ -166,7 +166,7 @@ export default function SubmissionDetails({
             </div>
           </div>
         </CardContent>
-        {isPending && (
+        {submission.status === "pending" && (
           <CardFooter className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-6">
             <Button
               onClick={handleApprove}
@@ -188,11 +188,10 @@ export default function SubmissionDetails({
         )}
         {(submission.status === "rejected" ||
           submission.status === "approved") && (
-          <CardFooter className="grid grid-cols-1 pt-6">
+          <CardFooter className="flex justify-center pt-6">
             <Button
               onClick={handleReReview}
               variant="secondary"
-              className="w-full"
               disabled={!isActionable}
             >
               <Undo2 />
