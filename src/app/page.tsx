@@ -43,7 +43,7 @@ export default function Home() {
   );
   const { toast } = useToast();
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = 10;
   const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
