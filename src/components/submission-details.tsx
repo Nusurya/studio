@@ -22,11 +22,13 @@ interface SubmissionDetailsProps {
     status: SubmissionStatus,
     reason?: string
   ) => void;
+  isActionable: boolean;
 }
 
 export default function SubmissionDetails({
   submission,
   onUpdateStatus,
+  isActionable,
 }: SubmissionDetailsProps) {
   const [isRejecting, setIsRejecting] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
@@ -165,13 +167,18 @@ export default function SubmissionDetails({
         </CardContent>
         {isPending && (
           <CardFooter className="flex gap-2">
-            <Button onClick={handleApprove} className="w-full">
+            <Button
+              onClick={handleApprove}
+              className="w-full"
+              disabled={!isActionable}
+            >
               Approve
             </Button>
             <Button
               onClick={handleStartReject}
               variant="outline"
               className="w-full text-destructive border-destructive hover:bg-destructive/10 hover:text-destructive"
+              disabled={!isActionable}
             >
               Reject
             </Button>
@@ -184,6 +191,7 @@ export default function SubmissionDetails({
               onClick={handleReReview}
               variant="secondary"
               className="w-full"
+              disabled={!isActionable}
             >
               Re-review
             </Button>

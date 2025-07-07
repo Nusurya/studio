@@ -31,7 +31,6 @@ import SubmissionDetails from "@/components/submission-details";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
-import { UserCircle } from "lucide-react";
 
 export default function Home() {
   const [submissions, setSubmissions] =
@@ -47,31 +46,34 @@ export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
   const [hasMounted, setHasMounted] = useState(false);
-  const [currentModerator, setCurrentModerator] = useState<Moderator | null>(
-    null
-  );
+  const [currentModeratorId, setCurrentModeratorId] = useState<string>("all");
 
   useEffect(() => {
     setHasMounted(true);
-    if (moderators.length > 0) {
-      setCurrentModerator(moderators[0]);
-    }
   }, []);
-
-  const handleModeratorChange = (moderatorId: string) => {
-    const newModerator = moderators.find((mod) => mod.id === moderatorId);
-    setCurrentModerator(newModerator || null);
-  };
 
   const handleUpdateStatus = (
     id: string,
     status: SubmissionStatus,
     reason?: string
   ) => {
+    if (currentModeratorId === "all") {
+      toast({
+        title: "Action Required",
+        description:
+          "Please select a moderator from the dropdown to take an action.",
+        variant: "destructive",
+      });
+      return;
+    }
+    const currentModerator = moderators.find(
+      (mod) => mod.id === currentModeratorId
+    );
+
     if (!currentModerator) {
       toast({
-        title: "No Moderator Selected",
-        description: "Please select a moderator before taking action.",
+        title: "Error",
+        description: "Invalid moderator selected.",
         variant: "destructive",
       });
       return;
@@ -162,15 +164,18 @@ export default function Home() {
               <h2 className="text-2xl font-bold">Podcasts</h2>
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2">
-                  <UserCircle className="text-muted-foreground" />
+                  <span className="text-sm font-medium text-muted-foreground">
+                    Acting as:
+                  </span>
                   <Select
-                    value={currentModerator?.id}
-                    onValueChange={handleModeratorChange}
+                    value={currentModeratorId}
+                    onValueChange={setCurrentModeratorId}
                   >
                     <SelectTrigger className="w-[180px]">
                       <SelectValue placeholder="Select Moderator" />
                     </SelectTrigger>
                     <SelectContent>
+                      <SelectItem value="all">All</SelectItem>
                       {moderators.map((mod) => (
                         <SelectItem key={mod.id} value={mod.id}>
                           {mod.name}
@@ -290,6 +295,7 @@ export default function Home() {
               key={selectedSubmission.id}
               submission={selectedSubmission}
               onUpdateStatus={handleUpdateStatus}
+              isActionable={currentModeratorId !== "all"}
             />
           ) : (
             <Card className="h-full flex items-center justify-center">
