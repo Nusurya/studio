@@ -167,7 +167,7 @@ export default function SubmissionDetails({
           </div>
         </CardContent>
         {isPending && (
-          <CardFooter className="flex gap-2">
+          <CardFooter className="flex flex-col sm:flex-row gap-2">
             <Button
               onClick={handleApprove}
               variant="accent"
