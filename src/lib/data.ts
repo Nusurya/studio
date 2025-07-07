@@ -1,24 +1,24 @@
 import type { PodcastSubmission, Moderator } from "./types";
 
 export const moderators: Moderator[] = [
-  { id: "mod1", name: "Alex Ray" },
-  { id: "mod2", name: "Ben Carter" },
-  { id: "mod3", name: "Casey Day" },
-  { id: "mod4", name: "Drew Evans" },
-  { id: "mod5", name: "Frankie Green" },
-  { id: "mod6", name: "Glen Harris" },
+  { id: "mod1", name: "Priya Sharma" },
+  { id: "mod2", name: "Rohan Kapoor" },
+  { id: "mod3", name: "Anjali Mehta" },
+  { id: "mod4", name: "Vikram Singh" },
+  { id: "mod5", name: "Neha Gupta" },
+  { id: "mod6", name: "Arjun Reddy" },
 ];
 
 export const submissions: PodcastSubmission[] = [
   {
     id: "12345",
-    title: "Understanding Diabetes",
+    title: "Understanding Ayurveda",
     description:
-      "This episode covers the basics of diabetes, including symptoms, causes, and management strategies.",
-    rssUrl: "https://feeds.example.com/understanding-diabetes",
+      "This episode covers the basics of Ayurveda, including doshas, principles, and wellness strategies.",
+    rssUrl: "https://feeds.example.com/understanding-ayurveda",
     submitter: {
-      name: "John Smith",
-      email: "john@example.com",
+      name: "Sanjay Gupta",
+      email: "sanjay@example.com",
     },
     status: "pending",
     submissionDate: "2024-02-15T10:00:00Z",
@@ -29,13 +29,13 @@ export const submissions: PodcastSubmission[] = [
   },
   {
     id: "67890",
-    title: "The Future of Telemedicine",
+    title: "The Future of UPI",
     description:
-      "A look into how virtual appointments and remote monitoring are changing the healthcare landscape.",
-    rssUrl: "https://feeds.example.com/telemedicine-future",
+      "A look into how the Unified Payments Interface is changing the digital payment landscape in India.",
+    rssUrl: "https://feeds.example.com/upi-future",
     submitter: {
-      name: "Sarah Brown",
-      email: "sarah@example.com",
+      name: "Sunita Patel",
+      email: "sunita@example.com",
     },
     status: "approved",
     submissionDate: "2024-02-14T14:30:00Z",
@@ -53,18 +53,18 @@ export const submissions: PodcastSubmission[] = [
   },
   {
     id: "54321",
-    title: "Healthy Eating Tips",
+    title: "Homemade Indian Sweets",
     description:
-      "Simple and effective tips for incorporating healthier foods into your daily diet for a better lifestyle.",
-    rssUrl: "https://feeds.example.com/healthy-eating",
+      "Simple and effective tips for making delicious Indian sweets at home for festivals and celebrations.",
+    rssUrl: "https://feeds.example.com/indian-sweets",
     submitter: {
-      name: "Michael Johnson",
-      email: "michael@example.com",
+      name: "Manoj Kumar",
+      email: "manoj@example.com",
     },
     status: "rejected",
     rejectionReason: "Audio quality does not meet our standards.",
     submissionDate: "2024-02-13T09:00:00Z",
-    category: "Wellness",
+    category: "Cooking",
     audioUrl:
       "https://storage.googleapis.com/studioprod-media/sotw-2245-discover.mp3",
     statusHistory: [
@@ -79,13 +79,13 @@ export const submissions: PodcastSubmission[] = [
   },
   {
     id: "98765",
-    title: "Startup Funding 101",
+    title: "Indian Startup Ecosystem",
     description:
-      "An insider's guide to securing funding for your startup, from venture capital to angel investors.",
-    rssUrl: "https://feeds.example.com/startup-funding",
+      "An insider's guide to the booming startup scene in India, from Bangalore to Delhi.",
+    rssUrl: "https://feeds.example.com/indian-startup-ecosystem",
     submitter: {
-      name: "Emily White",
-      email: "emily@example.com",
+      name: "Deepika Singh",
+      email: "deepika@example.com",
     },
     status: "pending",
     submissionDate: "2024-02-12T18:00:00Z",
@@ -96,30 +96,30 @@ export const submissions: PodcastSubmission[] = [
   },
   {
     id: "13579",
-    title: "The Art of Storytelling",
+    title: "The Epics: Ramayana and Mahabharata",
     description:
-      "Learn how to craft compelling narratives that captivate your audience, whether in writing or speaking.",
-    rssUrl: "https://feeds.example.com/art-of-storytelling",
+      "Exploring the timeless tales and lessons from the great Indian epics.",
+    rssUrl: "https://feeds.example.com/indian-epics",
     submitter: {
-      name: "David Green",
-      email: "david@example.com",
+      name: "Ravi Verma",
+      email: "ravi@example.com",
     },
     status: "pending",
     submissionDate: "2024-02-11T11:45:00Z",
-    category: "Creative",
+    category: "Culture",
     audioUrl:
       "https://storage.googleapis.com/studioprod-media/sotw-2245-discover.mp3",
     statusHistory: [{ status: "pending", changedAt: "2024-02-11T11:45:00Z" }],
   },
   {
     id: "24680",
-    title: "Meditation for Beginners",
+    title: "Yoga for Inner Peace",
     description:
-      "An introduction to mindfulness and meditation techniques to reduce stress and improve focus.",
-    rssUrl: "https://feeds.example.com/meditation-beginners",
+      "An introduction to various asanas and meditation techniques to reduce stress and improve focus.",
+    rssUrl: "https://feeds.example.com/yoga-for-peace",
     submitter: {
-      name: "Laura Evans",
-      email: "laura@example.com",
+      name: "Lakshmi Iyer",
+      email: "lakshmi@example.com",
     },
     status: "pending",
     submissionDate: "2024-02-10T15:00:00Z",
@@ -130,13 +130,13 @@ export const submissions: PodcastSubmission[] = [
   },
   {
     id: "11223",
-    title: "Cybersecurity Threats Today",
+    title: "Digital India Explained",
     description:
-      "Exploring the latest cybersecurity threats and how to protect yourself and your business online.",
-    rssUrl: "https://feeds.example.com/cybersecurity-threats",
+      "Exploring the government's initiative for a digitally empowered society and knowledge economy.",
+    rssUrl: "https://feeds.example.com/digital-india",
     submitter: {
-      name: "Chris Williams",
-      email: "chris@example.com",
+      name: "Karan Malhotra",
+      email: "karan@example.com",
     },
     status: "approved",
     submissionDate: "2024-02-09T12:20:00Z",
@@ -154,18 +154,18 @@ export const submissions: PodcastSubmission[] = [
   },
   {
     id: "44556",
-    title: "The Keto Diet Explained",
+    title: "Bollywood Film Review",
     description:
-      "A deep dive into the ketogenic diet, its benefits, risks, and what you can eat.",
-    rssUrl: "https://feeds.example.com/keto-diet",
+      "A deep dive into the latest blockbuster Bollywood movie, its story, music, and performances.",
+    rssUrl: "https://feeds.example.com/bollywood-review",
     submitter: {
-      name: "Amanda Clark",
-      email: "amanda@example.com",
+      name: "Aisha Khan",
+      email: "aisha@example.com",
     },
     status: "rejected",
-    rejectionReason: "Inaccurate medical claims.",
+    rejectionReason: "Contains spoilers without warning.",
     submissionDate: "2024-02-08T16:00:00Z",
-    category: "Healthcare",
+    category: "Entertainment",
     audioUrl:
       "https://storage.googleapis.com/studioprod-media/sotw-2245-discover.mp3",
     statusHistory: [
@@ -173,20 +173,20 @@ export const submissions: PodcastSubmission[] = [
       {
         status: "rejected",
         changedAt: "2024-02-08T16:30:00Z",
-        reason: "Inaccurate medical claims.",
+        reason: "Contains spoilers without warning.",
         moderator: moderators[3],
       },
     ],
   },
   {
     id: "77889",
-    title: "Basics of Graphic Design",
+    title: "Indian Classical Music",
     description:
-      "Learn the fundamental principles of graphic design, including color theory, typography, and layout.",
-    rssUrl: "https://feeds.example.com/graphic-design-basics",
+      "An introduction to the fundamental principles of Carnatic and Hindustani classical music.",
+    rssUrl: "https://feeds.example.com/indian-classical-music",
     submitter: {
-      name: "Robert Lewis",
-      email: "robert@example.com",
+      name: "Rajesh Pillai",
+      email: "rajesh@example.com",
     },
     status: "pending",
     submissionDate: "2024-02-07T10:10:00Z",
@@ -197,13 +197,13 @@ export const submissions: PodcastSubmission[] = [
   },
   {
     id: "99001",
-    title: "Financial Independence",
+    title: "Indian Stock Market Analysis",
     description:
-      "Strategies for achieving financial independence and retiring early (FIRE movement).",
-    rssUrl: "https://feeds.example.com/financial-independence",
+      "Strategies for investing in the Indian stock market for long-term growth.",
+    rssUrl: "https://feeds.example.com/indian-stock-market",
     submitter: {
-      name: "Jessica Martinez",
-      email: "jessica@example.com",
+      name: "Meera Krishnan",
+      email: "meera@example.com",
     },
     status: "approved",
     submissionDate: "2024-02-06T19:00:00Z",
@@ -215,6 +215,213 @@ export const submissions: PodcastSubmission[] = [
       {
         status: "approved",
         changedAt: "2024-02-07T09:00:00Z",
+        moderator: moderators[4],
+      },
+    ],
+  },
+  {
+    id: "30001",
+    title: "History of the Mughal Empire",
+    description:
+      "A detailed account of the rise and fall of the Mughal dynasty in India.",
+    rssUrl: "https://feeds.example.com/mughal-history",
+    submitter: {
+      name: "Arun Singh",
+      email: "arun@example.com",
+    },
+    status: "pending",
+    submissionDate: "2024-03-01T11:00:00Z",
+    category: "History",
+    audioUrl:
+      "https://storage.googleapis.com/studioprod-media/sotw-2245-discover.mp3",
+    statusHistory: [{ status: "pending", changedAt: "2024-03-01T11:00:00Z" }],
+  },
+  {
+    id: "30002",
+    title: "Modern Indian Cuisine",
+    description:
+      "Exploring fusion recipes that blend traditional and modern cooking techniques.",
+    rssUrl: "https://feeds.example.com/modern-indian-cuisine",
+    submitter: {
+      name: "Pooja Mehta",
+      email: "pooja@example.com",
+    },
+    status: "approved",
+    submissionDate: "2024-03-02T14:00:00Z",
+    category: "Cooking",
+    audioUrl:
+      "https://storage.googleapis.com/studioprod-media/sotw-2245-discover.mp3",
+    statusHistory: [
+      { status: "pending", changedAt: "2024-03-02T14:00:00Z" },
+      {
+        status: "approved",
+        changedAt: "2024-03-02T15:30:00Z",
+        moderator: moderators[5],
+      },
+    ],
+  },
+  {
+    id: "30003",
+    title: "Travel Guide to Kerala",
+    description:
+      "Discover the backwaters, beaches, and culture of 'God's Own Country'.",
+    rssUrl: "https://feeds.example.com/kerala-travel-guide",
+    submitter: {
+      name: "Nikhil Menon",
+      email: "nikhil@example.com",
+    },
+    status: "pending",
+    submissionDate: "2024-03-03T09:20:00Z",
+    category: "Travel",
+    audioUrl:
+      "https://storage.googleapis.com/studioprod-media/sotw-2245-discover.mp3",
+    statusHistory: [{ status: "pending", changedAt: "2024-03-03T09:20:00Z" }],
+  },
+  {
+    id: "30004",
+    title: "Indian Politics Today",
+    description:
+      "An analysis of the current political landscape and major policy changes.",
+    rssUrl: "https://feeds.example.com/indian-politics",
+    submitter: {
+      name: "Aditi Rao",
+      email: "aditi@example.com",
+    },
+    status: "rejected",
+    rejectionReason: "One-sided political commentary.",
+    submissionDate: "2024-03-04T18:00:00Z",
+    category: "Politics",
+    audioUrl:
+      "https://storage.googleapis.com/studioprod-media/sotw-2245-discover.mp3",
+    statusHistory: [
+      { status: "pending", changedAt: "2024-03-04T18:00:00Z" },
+      {
+        status: "rejected",
+        changedAt: "2024-03-04T18:45:00Z",
+        reason: "One-sided political commentary.",
+        moderator: moderators[0],
+      },
+    ],
+  },
+  {
+    id: "30005",
+    title: "The Art of Rangoli",
+    description:
+      "A guide to creating beautiful and intricate Rangoli designs for festivals.",
+    rssUrl: "https://feeds.example.com/rangoli-art",
+    submitter: {
+      name: "Sneha Desai",
+      email: "sneha@example.com",
+    },
+    status: "pending",
+    submissionDate: "2024-03-05T12:00:00Z",
+    category: "Creative",
+    audioUrl:
+      "https://storage.googleapis.com/studioprod-media/sotw-2245-discover.mp3",
+    statusHistory: [{ status: "pending", changedAt: "2024-03-05T12:00:00Z" }],
+  },
+  {
+    id: "30006",
+    title: "Understanding GST in India",
+    description:
+      "A simplified explanation of the Goods and Services Tax system.",
+    rssUrl: "https://feeds.example.com/gst-explained",
+    submitter: {
+      name: "Vivek Kumar",
+      email: "vivek@example.com",
+    },
+    status: "approved",
+    submissionDate: "2024-03-06T10:00:00Z",
+    category: "Business",
+    audioUrl:
+      "https://storage.googleapis.com/studioprod-media/sotw-2245-discover.mp3",
+    statusHistory: [
+      { status: "pending", changedAt: "2024-03-06T10:00:00Z" },
+      {
+        status: "approved",
+        changedAt: "2024-03-06T11:00:00Z",
+        moderator: moderators[1],
+      },
+    ],
+  },
+  {
+    id: "30007",
+    title: "The Indian Premier League (IPL)",
+    description:
+      "A fan's perspective on the history, teams, and excitement of the IPL.",
+    rssUrl: "https://feeds.example.com/ipl-discussion",
+    submitter: {
+      name: "Amit Patel",
+      email: "amit@example.com",
+    },
+    status: "pending",
+    submissionDate: "2024-03-07T16:30:00Z",
+    category: "Sports",
+    audioUrl:
+      "https://storage.googleapis.com/studioprod-media/sotw-2245-discover.mp3",
+    statusHistory: [{ status: "pending", changedAt: "2024-03-07T16:30:00Z" }],
+  },
+  {
+    id: "30008",
+    title: "Space Missions of ISRO",
+    description:
+      "Highlighting the major achievements and future missions of the Indian Space Research Organisation.",
+    rssUrl: "https://feeds.example.com/isro-missions",
+    submitter: {
+      name: "Divya Nair",
+      email: "divya@example.com",
+    },
+    status: "approved",
+    submissionDate: "2024-03-08T13:00:00Z",
+    category: "Science",
+    audioUrl:
+      "https://storage.googleapis.com/studioprod-media/sotw-2245-discover.mp3",
+    statusHistory: [
+      { status: "pending", changedAt: "2024-03-08T13:00:00Z" },
+      {
+        status: "approved",
+        changedAt: "2024-03-08T14:00:00Z",
+        moderator: moderators[2],
+      },
+    ],
+  },
+  {
+    id: "30009",
+    title: "Indian Wildlife Conservation",
+    description:
+      "Discussing the efforts to protect endangered species like tigers and elephants in India.",
+    rssUrl: "https://feeds.example.com/indian-wildlife",
+    submitter: {
+      name: "Gaurav Joshi",
+      email: "gaurav@example.com",
+    },
+    status: "pending",
+    submissionDate: "2024-03-09T08:45:00Z",
+    category: "Environment",
+    audioUrl:
+      "https://storage.googleapis.com/studioprod-media/sotw-2245-discover.mp3",
+    statusHistory: [{ status: "pending", changedAt: "2024-03-09T08:45:00Z" }],
+  },
+  {
+    id: "30010",
+    title: "The Gig Economy in India",
+    description:
+      "An analysis of the rise of freelance and contract work in Indian cities.",
+    rssUrl: "https://feeds.example.com/indian-gig-economy",
+    submitter: {
+      name: "Ishita Agarwal",
+      email: "ishita@example.com",
+    },
+    status: "approved",
+    submissionDate: "2024-03-10T17:00:00Z",
+    category: "Business",
+    audioUrl:
+      "https://storage.googleapis.com/studioprod-media/sotw-2245-discover.mp3",
+    statusHistory: [
+      { status: "pending", changedAt: "2024-03-10T17:00:00Z" },
+      {
+        status: "approved",
+        changedAt: "2024-03-11T10:00:00Z",
         moderator: moderators[4],
       },
     ],
