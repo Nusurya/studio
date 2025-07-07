@@ -6,7 +6,7 @@ export function Header() {
   return (
     <header className="bg-card border-b sticky top-0 z-10">
       <div className="container mx-auto px-4 md:px-8">
-        <div className="flex items-center justify-end h-20">
+        <div className="flex items-center justify-start h-20">
           <div className="flex items-center gap-4">
             <Logo />
             <Separator orientation="vertical" className="h-10" />
