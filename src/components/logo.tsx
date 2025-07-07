@@ -1,25 +1,44 @@
 export function Logo() {
   return (
     <svg
-      width="48"
-      height="38"
-      viewBox="24 0 48 38"
+      height="36"
+      viewBox="0 0 200 36"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
       <path
-        d="M25 34V15.25C25 9.03756 29.8208 4 35.75 4H37.25C43.1792 4 48 9.03756 48 15.25V22"
+        d="M21.5 30V11.25C21.5 5.03756 26.3208 0 32.25 0H33.75C39.6792 0 44.5 5.03756 44.5 11.25V18"
         stroke="hsl(var(--primary))"
-        strokeWidth="6"
+        strokeWidth="5"
         strokeLinecap="round"
       />
       <path
-        d="M44.5 19.5C44.5 26.6716 50.0784 32.5 57.25 32.5C64.4216 32.5 70 26.6716 70 19.5C70 12.3284 64.4216 6.5 57.25 6.5"
+        d="M41 15.5C41 22.6716 46.5784 28.5 53.75 28.5C60.9216 28.5 66.5 22.6716 66.5 15.5C66.5 8.32843 60.9216 2.5 53.75 2.5"
         stroke="hsl(var(--accent))"
-        strokeWidth="6"
+        strokeWidth="5"
         strokeLinecap="round"
       />
+       <text
+        x="75"
+        y="12"
+        fontFamily="Inter, sans-serif"
+        fontSize="14"
+        fontWeight="500"
+        fill="hsl(var(--primary))"
+      >
+        NUSHIFT
+      </text>
+      <text
+        x="75"
+        y="29"
+        fontFamily="Inter, sans-serif"
+        fontSize="14"
+        fontWeight="500"
+        fill="hsl(var(--accent))"
+      >
+        CONNECT
+      </text>
     </svg>
   );
 }
