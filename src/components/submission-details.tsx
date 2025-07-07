@@ -103,7 +103,7 @@ export default function SubmissionDetails({
                 Submission Date
               </h3>
               <p className="text-foreground/80">
-                {format(new Date(submission.submissionDate), "PP")}
+                {format(new Date(submission.submissionDate), "PPp")}
               </p>
             </div>
           </div>

@@ -166,7 +166,7 @@ export default function Home() {
                           {submission.submitter.name}
                         </TableCell>
                         <TableCell className="hidden sm:table-cell">
-                          {format(new Date(submission.submissionDate), "PP")}
+                          {format(new Date(submission.submissionDate), "PPp")}
                         </TableCell>
                         <TableCell>
                           <StatusBadge status={submission.status} />
