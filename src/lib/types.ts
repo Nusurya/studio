@@ -1,9 +1,15 @@
 export type SubmissionStatus = "pending" | "approved" | "rejected";
 
+export interface Moderator {
+  id: string;
+  name: string;
+}
+
 export interface StatusHistory {
   status: SubmissionStatus;
   changedAt: string;
   reason?: string;
+  moderator?: Moderator;
 }
 
 export interface PodcastSubmission {

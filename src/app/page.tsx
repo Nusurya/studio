@@ -2,11 +2,12 @@
 
 import { useState, useEffect } from "react";
 import { Header } from "@/components/header";
-import { submissions as initialSubmissions } from "@/lib/data";
+import { submissions as initialSubmissions, moderators } from "@/lib/data";
 import type {
   PodcastSubmission,
   StatusHistory,
   SubmissionStatus,
+  Moderator,
 } from "@/lib/types";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import {
@@ -45,22 +46,43 @@ export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
   const [hasMounted, setHasMounted] = useState(false);
+  const [currentModerator, setCurrentModerator] = useState<Moderator | null>(
+    null
+  );
 
   useEffect(() => {
     setHasMounted(true);
+    if (moderators.length > 0) {
+      setCurrentModerator(moderators[0]);
+    }
   }, []);
+
+  const handleModeratorChange = (moderatorId: string) => {
+    const newModerator = moderators.find((mod) => mod.id === moderatorId);
+    setCurrentModerator(newModerator || null);
+  };
 
   const handleUpdateStatus = (
     id: string,
     status: SubmissionStatus,
     reason?: string
   ) => {
+    if (!currentModerator) {
+      toast({
+        title: "No Moderator Selected",
+        description: "Please select a moderator before taking action.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     const newSubmissions = submissions.map((s) => {
       if (s.id === id) {
         const newHistoryEntry: StatusHistory = {
           status,
           changedAt: new Date().toISOString(),
           reason: status === "rejected" ? reason : undefined,
+          moderator: currentModerator,
         };
         const newHistory = [
           ...(s.statusHistory || [
@@ -134,7 +156,11 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
+      <Header
+        moderators={moderators}
+        currentModerator={currentModerator}
+        onModeratorChange={handleModeratorChange}
+      />
       <main className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-8 p-4 md:p-8 container mx-auto">
         <div className="lg:col-span-2">
           <Card>

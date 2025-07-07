@@ -114,6 +114,12 @@ export default function SubmissionDetails({
                       <div className="flex-1">
                         <p className="text-foreground/80 capitalize">
                           {event.status}
+                          {event.moderator && (
+                            <span className="text-muted-foreground text-xs">
+                              {" "}
+                              by {event.moderator.name}
+                            </span>
+                          )}
                         </p>
                         <p className="text-xs text-muted-foreground">
                           {hasMounted
