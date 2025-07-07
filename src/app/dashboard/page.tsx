@@ -170,57 +170,54 @@ export default function DashboardPage() {
       <main className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-8 p-4 md:p-8 container mx-auto">
         <div className="lg:col-span-2">
           <Card>
-            <CardHeader className="flex flex-wrap items-center justify-between gap-4">
-              <h2 className="text-2xl font-bold text-primary">Podcasts</h2>
-              <div className="flex flex-wrap items-center justify-end gap-4">
-                <div className="relative">
-                  <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                  <Input
-                    placeholder="Search..."
-                    value={searchTerm}
-                    onChange={(e) => {
-                      setSearchTerm(e.target.value);
-                      setCurrentPage(1);
-                    }}
-                    className="w-full pl-9 sm:w-auto md:w-[250px]"
-                  />
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-sm font-medium text-muted-foreground">
-                    Panelist:
-                  </span>
-                  <Select
-                    value={currentModeratorId}
-                    onValueChange={setCurrentModeratorId}
-                  >
-                    <SelectTrigger className="w-[180px]">
-                      <SelectValue placeholder="Select Panelist" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="all">All</SelectItem>
-                      {moderators.map((mod) => (
-                        <SelectItem key={mod.id} value={mod.id}>
-                          {mod.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
+            <CardHeader className="flex flex-wrap items-center justify-end gap-4">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                <Input
+                  placeholder="Search..."
+                  value={searchTerm}
+                  onChange={(e) => {
+                    setSearchTerm(e.target.value);
+                    setCurrentPage(1);
+                  }}
+                  className="w-full pl-9 sm:w-auto md:w-[250px]"
+                />
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-medium text-muted-foreground">
+                  Panelist:
+                </span>
                 <Select
-                  value={statusFilter}
-                  onValueChange={(v) => handleFilterChange(v as any)}
+                  value={currentModeratorId}
+                  onValueChange={setCurrentModeratorId}
                 >
                   <SelectTrigger className="w-[180px]">
-                    <SelectValue placeholder="All Statuses" />
+                    <SelectValue placeholder="Select Panelist" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="all">All Statuses</SelectItem>
-                    <SelectItem value="pending">Pending</SelectItem>
-                    <SelectItem value="approved">Approved</SelectItem>
-                    <SelectItem value="rejected">Rejected</SelectItem>
+                    <SelectItem value="all">All</SelectItem>
+                    {moderators.map((mod) => (
+                      <SelectItem key={mod.id} value={mod.id}>
+                        {mod.name}
+                      </SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
               </div>
+              <Select
+                value={statusFilter}
+                onValueChange={(v) => handleFilterChange(v as any)}
+              >
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="All Statuses" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Statuses</SelectItem>
+                  <SelectItem value="pending">Pending</SelectItem>
+                  <SelectItem value="approved">Approved</SelectItem>
+                  <SelectItem value="rejected">Rejected</SelectItem>
+                </SelectContent>
+              </Select>
             </CardHeader>
             <CardContent>
               <div className="border rounded-md">
