@@ -161,7 +161,7 @@ export default function Home() {
         <div className="lg:col-span-2">
           <Card>
             <CardHeader className="flex flex-row justify-between items-center">
-              <h2 className="text-2xl font-bold">Podcasts</h2>
+              <h2 className="text-2xl font-bold text-primary">Podcasts</h2>
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2">
                   <span className="text-sm font-medium text-muted-foreground">

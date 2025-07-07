@@ -61,19 +61,19 @@ export default function SubmissionDetails({
     <>
       <Card className="sticky top-28">
         <CardHeader>
-          <CardTitle className="text-xl font-bold leading-tight">
+          <CardTitle className="text-xl font-bold leading-tight text-primary">
             {submission.title}
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4 text-sm">
           <div>
-            <h3 className="font-semibold text-foreground text-xs uppercase tracking-wider">
+            <h3 className="font-semibold text-primary text-xs uppercase tracking-wider">
               Description
             </h3>
             <p className="text-muted-foreground">{submission.description}</p>
           </div>
           <div>
-            <h3 className="font-semibold text-foreground text-xs uppercase tracking-wider">
+            <h3 className="font-semibold text-primary text-xs uppercase tracking-wider">
               Category
             </h3>
             <p className="text-muted-foreground">{submission.category}</p>
@@ -98,7 +98,7 @@ export default function SubmissionDetails({
 
           {submission.statusHistory && submission.statusHistory.length > 0 && (
             <div>
-              <h3 className="font-semibold text-foreground text-xs uppercase tracking-wider mb-2">
+              <h3 className="font-semibold text-primary text-xs uppercase tracking-wider mb-2">
                 Audit Trail
               </h3>
               <div className="space-y-3">
@@ -145,7 +145,7 @@ export default function SubmissionDetails({
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <h3 className="font-semibold text-foreground text-xs uppercase tracking-wider">
+              <h3 className="font-semibold text-primary text-xs uppercase tracking-wider">
                 Uploader
               </h3>
               <p className="text-muted-foreground">{submission.submitter.name}</p>
@@ -155,7 +155,7 @@ export default function SubmissionDetails({
             </div>
 
             <div>
-              <h3 className="font-semibold text-foreground text-xs uppercase tracking-wider">
+              <h3 className="font-semibold text-primary text-xs uppercase tracking-wider">
                 Submission Date
               </h3>
               <p className="text-muted-foreground">
