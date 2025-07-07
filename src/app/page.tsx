@@ -29,7 +29,7 @@ export default function LoginPage() {
       </div>
       <Card className="w-full max-w-sm">
         <CardHeader>
-          <CardTitle className="text-2xl">Panelist Login</CardTitle>
+          <CardTitle className="text-2xl">LOGIN</CardTitle>
           <CardDescription>
             Enter your credentials to access the admin panel.
           </CardDescription>
