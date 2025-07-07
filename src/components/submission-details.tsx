@@ -196,7 +196,7 @@ export default function SubmissionDetails({
               disabled={!isActionable}
             >
               <Undo2 />
-              Send to Review
+              Reconsider
             </Button>
           </CardFooter>
         )}
