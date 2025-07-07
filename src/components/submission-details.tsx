@@ -66,6 +66,10 @@ export default function SubmissionDetails({
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4 text-sm">
+          <audio controls src={submission.audioUrl} className="w-full h-10">
+            Your browser does not support the audio element.
+          </audio>
+
           <div>
             <h3 className="font-semibold text-primary text-xs uppercase tracking-wider">
               Description
@@ -78,10 +82,6 @@ export default function SubmissionDetails({
             </h3>
             <p className="text-muted-foreground">{submission.category}</p>
           </div>
-
-          <audio controls src={submission.audioUrl} className="w-full h-10">
-            Your browser does not support the audio element.
-          </audio>
 
           {submission.status === "rejected" && submission.rejectionReason && (
             <div>
