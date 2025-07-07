@@ -188,7 +188,7 @@ export default function SubmissionDetails({
         )}
         {(submission.status === "rejected" ||
           submission.status === "approved") && (
-          <CardFooter className="pt-6">
+          <CardFooter className="grid pt-6">
             <Button
               onClick={handleReReview}
               variant="secondary"
