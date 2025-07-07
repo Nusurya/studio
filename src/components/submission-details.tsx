@@ -66,16 +66,16 @@ export default function SubmissionDetails({
         </CardHeader>
         <CardContent className="space-y-4 text-sm">
           <div>
-            <h3 className="font-semibold text-muted-foreground text-xs uppercase tracking-wider">
+            <h3 className="font-semibold text-foreground text-xs uppercase tracking-wider">
               Description
             </h3>
-            <p className="text-foreground/80">{submission.description}</p>
+            <p className="text-muted-foreground">{submission.description}</p>
           </div>
           <div>
-            <h3 className="font-semibold text-muted-foreground text-xs uppercase tracking-wider">
+            <h3 className="font-semibold text-foreground text-xs uppercase tracking-wider">
               Category
             </h3>
-            <p className="text-foreground/80">{submission.category}</p>
+            <p className="text-muted-foreground">{submission.category}</p>
           </div>
 
           <audio controls src={submission.audioUrl} className="w-full h-10">
@@ -87,7 +87,7 @@ export default function SubmissionDetails({
               <h3 className="font-semibold text-destructive text-xs uppercase tracking-wider">
                 Rejection Reason
               </h3>
-              <p className="text-foreground/80">
+              <p className="text-muted-foreground">
                 {submission.rejectionReason}
               </p>
             </div>
@@ -97,7 +97,7 @@ export default function SubmissionDetails({
 
           {submission.statusHistory && submission.statusHistory.length > 0 && (
             <div>
-              <h3 className="font-semibold text-muted-foreground text-xs uppercase tracking-wider mb-2">
+              <h3 className="font-semibold text-foreground text-xs uppercase tracking-wider mb-2">
                 Audit Trail
               </h3>
               <div className="space-y-3">
@@ -114,7 +114,7 @@ export default function SubmissionDetails({
                         <StatusBadge status={event.status} />
                       </div>
                       <div className="flex-1">
-                        <p className="text-foreground/80 capitalize">
+                        <p className="text-muted-foreground capitalize">
                           {event.status}
                           {event.moderator && (
                             <span className="text-muted-foreground text-xs">
@@ -144,20 +144,20 @@ export default function SubmissionDetails({
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <h3 className="font-semibold text-muted-foreground text-xs uppercase tracking-wider">
+              <h3 className="font-semibold text-foreground text-xs uppercase tracking-wider">
                 Uploader
               </h3>
-              <p className="text-foreground/80">{submission.submitter.name}</p>
+              <p className="text-muted-foreground">{submission.submitter.name}</p>
               <p className="text-xs text-muted-foreground">
                 ID: {submission.id}
               </p>
             </div>
 
             <div>
-              <h3 className="font-semibold text-muted-foreground text-xs uppercase tracking-wider">
+              <h3 className="font-semibold text-foreground text-xs uppercase tracking-wider">
                 Submission Date
               </h3>
-              <p className="text-foreground/80">
+              <p className="text-muted-foreground">
                 {hasMounted
                   ? format(new Date(submission.submissionDate), "PPp")
                   : null}
