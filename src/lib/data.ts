@@ -14,6 +14,9 @@ export const submissions: PodcastSubmission[] = [
     submissionDate: "2024-02-15T10:00:00Z",
     category: "Healthcare",
     audioUrl: "https://storage.googleapis.com/studioprod-media/sotw-2245-discover.mp3",
+    statusHistory: [
+      { status: "pending", changedAt: "2024-02-15T10:00:00Z" },
+    ],
   },
   {
     id: "67890",
@@ -28,6 +31,10 @@ export const submissions: PodcastSubmission[] = [
     submissionDate: "2024-02-14T14:30:00Z",
     category: "Technology",
     audioUrl: "https://storage.googleapis.com/studioprod-media/sotw-2245-discover.mp3",
+    statusHistory: [
+      { status: "pending", changedAt: "2024-02-14T14:30:00Z" },
+      { status: "approved", changedAt: "2024-02-14T15:00:00Z" },
+    ],
   },
   {
     id: "54321",
@@ -43,6 +50,14 @@ export const submissions: PodcastSubmission[] = [
     submissionDate: "2024-02-13T09:00:00Z",
     category: "Wellness",
     audioUrl: "https://storage.googleapis.com/studioprod-media/sotw-2245-discover.mp3",
+    statusHistory: [
+      { status: "pending", changedAt: "2024-02-13T09:00:00Z" },
+      {
+        status: "rejected",
+        changedAt: "2024-02-13T09:30:00Z",
+        reason: "Audio quality does not meet our standards.",
+      },
+    ],
   },
   {
     id: "98765",
@@ -57,6 +72,9 @@ export const submissions: PodcastSubmission[] = [
     submissionDate: "2024-02-12T18:00:00Z",
     category: "Business",
     audioUrl: "https://storage.googleapis.com/studioprod-media/sotw-2245-discover.mp3",
+    statusHistory: [
+      { status: "pending", changedAt: "2024-02-12T18:00:00Z" },
+    ],
   },
   {
     id: "13579",
@@ -71,5 +89,8 @@ export const submissions: PodcastSubmission[] = [
     submissionDate: "2024-02-11T11:45:00Z",
     category: "Creative",
     audioUrl: "https://storage.googleapis.com/studioprod-media/sotw-2245-discover.mp3",
+    statusHistory: [
+      { status: "pending", changedAt: "2024-02-11T11:45:00Z" },
+    ],
   },
 ];

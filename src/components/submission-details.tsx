@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { RejectionDialog } from "./rejection-dialog";
 import { Separator } from "@/components/ui/separator";
 import { format } from "date-fns";
+import { StatusBadge } from "./status-badge";
 
 interface SubmissionDetailsProps {
   submission: PodcastSubmission;
@@ -87,6 +88,47 @@ export default function SubmissionDetails({
               <p className="text-foreground/80">
                 {submission.rejectionReason}
               </p>
+            </div>
+          )}
+
+          <Separator />
+
+          {submission.statusHistory && submission.statusHistory.length > 0 && (
+            <div>
+              <h3 className="font-semibold text-muted-foreground text-xs uppercase tracking-wider mb-2">
+                Audit Trail
+              </h3>
+              <div className="space-y-3">
+                {submission.statusHistory
+                  .slice()
+                  .sort(
+                    (a, b) =>
+                      new Date(b.changedAt).getTime() -
+                      new Date(a.changedAt).getTime()
+                  )
+                  .map((event, index) => (
+                    <div key={index} className="flex items-start gap-4">
+                      <div className="pt-1">
+                        <StatusBadge status={event.status} />
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-foreground/80 capitalize">
+                          {event.status}
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          {hasMounted
+                            ? format(new Date(event.changedAt), "PPp")
+                            : null}
+                        </p>
+                        {event.status === "rejected" && event.reason && (
+                          <p className="text-xs text-muted-foreground italic mt-1">
+                            Reason: {event.reason}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+              </div>
             </div>
           )}
 

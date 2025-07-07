@@ -1,5 +1,11 @@
 export type SubmissionStatus = "pending" | "approved" | "rejected";
 
+export interface StatusHistory {
+  status: SubmissionStatus;
+  changedAt: string;
+  reason?: string;
+}
+
 export interface PodcastSubmission {
   id: string;
   title: string;
@@ -14,4 +20,5 @@ export interface PodcastSubmission {
   submissionDate: string;
   category: string;
   audioUrl: string;
+  statusHistory?: StatusHistory[];
 }

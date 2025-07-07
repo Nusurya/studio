@@ -3,7 +3,11 @@
 import { useState, useEffect } from "react";
 import { Header } from "@/components/header";
 import { submissions as initialSubmissions } from "@/lib/data";
-import type { PodcastSubmission, SubmissionStatus } from "@/lib/types";
+import type {
+  PodcastSubmission,
+  StatusHistory,
+  SubmissionStatus,
+} from "@/lib/types";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import {
   Table,
@@ -51,9 +55,28 @@ export default function Home() {
     status: SubmissionStatus,
     reason?: string
   ) => {
-    const newSubmissions = submissions.map((s) =>
-      s.id === id ? { ...s, status, rejectionReason: reason } : s
-    );
+    const newSubmissions = submissions.map((s) => {
+      if (s.id === id) {
+        const newHistoryEntry: StatusHistory = {
+          status,
+          changedAt: new Date().toISOString(),
+          reason: status === "rejected" ? reason : undefined,
+        };
+        const newHistory = [
+          ...(s.statusHistory || [
+            { status: "pending", changedAt: s.submissionDate },
+          ]),
+          newHistoryEntry,
+        ];
+        return {
+          ...s,
+          status,
+          rejectionReason: reason,
+          statusHistory: newHistory,
+        };
+      }
+      return s;
+    });
     setSubmissions(newSubmissions);
 
     const updatedSubmission = newSubmissions.find((s) => s.id === id);
