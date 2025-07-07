@@ -170,6 +170,7 @@ export default function SubmissionDetails({
           <CardFooter className="flex gap-2">
             <Button
               onClick={handleApprove}
+              variant="accent"
               className="w-full"
               disabled={!isActionable}
             >
@@ -177,8 +178,8 @@ export default function SubmissionDetails({
             </Button>
             <Button
               onClick={handleStartReject}
-              variant="outline"
-              className="w-full text-destructive border-destructive hover:bg-destructive/10 hover:text-destructive"
+              variant="destructive"
+              className="w-full"
               disabled={!isActionable}
             >
               Reject
