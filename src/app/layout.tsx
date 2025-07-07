@@ -3,7 +3,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: "Podcast Patrol",
+  title: "Nushift Connect",
   description: "Admin panel for moderating new podcast submissions.",
 };
 
