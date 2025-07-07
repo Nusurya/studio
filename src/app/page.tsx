@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Header } from "@/components/header";
 import { submissions as initialSubmissions } from "@/lib/data";
 import type { PodcastSubmission, SubmissionStatus } from "@/lib/types";
@@ -25,6 +25,7 @@ import { StatusBadge } from "@/components/status-badge";
 import SubmissionDetails from "@/components/submission-details";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   const [submissions, setSubmissions] =
@@ -37,6 +38,8 @@ export default function Home() {
     "all"
   );
   const { toast } = useToast();
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
 
   const handleUpdateStatus = (
     id: string,
@@ -70,6 +73,37 @@ export default function Home() {
     (s) => statusFilter === "all" || s.status === statusFilter
   );
 
+  const totalPages = Math.ceil(filteredSubmissions.length / itemsPerPage);
+  const paginatedSubmissions = filteredSubmissions.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  useEffect(() => {
+    // When the visible submissions change (due to pagination or filtering),
+    // ensure a submission is always selected if the list is not empty.
+    if (paginatedSubmissions.length > 0) {
+      if (
+        !selectedSubmission ||
+        !paginatedSubmissions.some((s) => s.id === selectedSubmission.id)
+      ) {
+        setSelectedSubmission(paginatedSubmissions[0]);
+      }
+    } else {
+      // This handles case where current page is empty after filtering/updates
+      if (currentPage > 1) {
+        setCurrentPage(1);
+      } else {
+        setSelectedSubmission(null);
+      }
+    }
+  }, [currentPage, paginatedSubmissions, selectedSubmission]);
+
+  const handleFilterChange = (value: SubmissionStatus | "all") => {
+    setStatusFilter(value);
+    setCurrentPage(1);
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
@@ -81,7 +115,7 @@ export default function Home() {
               <div className="flex gap-4">
                 <Select
                   value={statusFilter}
-                  onValueChange={(v) => setStatusFilter(v as any)}
+                  onValueChange={(v) => handleFilterChange(v as any)}
                 >
                   <SelectTrigger className="w-[180px]">
                     <SelectValue placeholder="All Statuses" />
@@ -101,26 +135,31 @@ export default function Home() {
                   <TableHeader>
                     <TableRow>
                       <TableHead>Podcast Title</TableHead>
-                      <TableHead className="hidden md:table-cell">Uploaded By</TableHead>
-                      <TableHead className="hidden sm:table-cell">Upload Date</TableHead>
+                      <TableHead className="hidden md:table-cell">
+                        Uploaded By
+                      </TableHead>
+                      <TableHead className="hidden sm:table-cell">
+                        Upload Date
+                      </TableHead>
                       <TableHead>Status</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {filteredSubmissions.map((submission) => (
+                    {paginatedSubmissions.map((submission) => (
                       <TableRow
                         key={submission.id}
                         onClick={() => setSelectedSubmission(submission)}
                         className={cn(
                           "cursor-pointer",
-                          selectedSubmission?.id === submission.id &&
-                            "bg-muted"
+                          selectedSubmission?.id === submission.id && "bg-muted"
                         )}
                       >
                         <TableCell className="font-medium">
                           <div className="flex flex-col">
                             <span>{submission.title}</span>
-                            <span className="text-xs text-muted-foreground md:hidden">{submission.submitter.name}</span>
+                            <span className="text-xs text-muted-foreground md:hidden">
+                              {submission.submitter.name}
+                            </span>
                           </div>
                         </TableCell>
                         <TableCell className="hidden md:table-cell">
@@ -137,6 +176,31 @@ export default function Home() {
                   </TableBody>
                 </Table>
               </div>
+              <div className="flex items-center justify-end space-x-2 py-4">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.max(prev - 1, 1))
+                  }
+                  disabled={currentPage === 1 || totalPages === 0}
+                >
+                  Previous
+                </Button>
+                <div className="flex w-[100px] items-center justify-center text-sm font-medium">
+                  Page {totalPages > 0 ? currentPage : 0} of {totalPages}
+                </div>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                  }
+                  disabled={currentPage === totalPages || totalPages === 0}
+                >
+                  Next
+                </Button>
+              </div>
             </CardContent>
           </Card>
         </div>
@@ -151,7 +215,7 @@ export default function Home() {
             <Card className="h-full flex items-center justify-center">
               <CardContent className="p-6">
                 <p className="text-muted-foreground">
-                  Select a submission to view details
+                  No submissions to display.
                 </p>
               </CardContent>
             </Card>
