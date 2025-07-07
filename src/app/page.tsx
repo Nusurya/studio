@@ -28,7 +28,7 @@ export default function LoginPage() {
         <Logo />
       </div>
       <Card className="w-full max-w-sm">
-        <CardHeader>
+        <CardHeader className="text-center">
           <CardTitle className="text-2xl">LOGIN</CardTitle>
           <CardDescription>
             Enter your credentials to access the admin panel.
