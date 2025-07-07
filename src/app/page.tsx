@@ -61,7 +61,7 @@ export default function Home() {
       toast({
         title: "Action Required",
         description:
-          "Please select a moderator from the dropdown to take an action.",
+          "Please select a panelist from the dropdown to take an action.",
         variant: "destructive",
       });
       return;
@@ -73,7 +73,7 @@ export default function Home() {
     if (!currentModerator) {
       toast({
         title: "Error",
-        description: "Invalid moderator selected.",
+        description: "Invalid panelist selected.",
         variant: "destructive",
       });
       return;
@@ -165,14 +165,14 @@ export default function Home() {
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2">
                   <span className="text-sm font-medium text-muted-foreground">
-                    Acting as:
+                    Panelist:
                   </span>
                   <Select
                     value={currentModeratorId}
                     onValueChange={setCurrentModeratorId}
                   >
                     <SelectTrigger className="w-[180px]">
-                      <SelectValue placeholder="Select Moderator" />
+                      <SelectValue placeholder="Select Panelist" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="all">All</SelectItem>
