@@ -1,9 +1,9 @@
 export function Logo() {
   return (
     <svg
-      width="210"
+      width="48"
       height="38"
-      viewBox="0 0 210 38"
+      viewBox="24 0 48 38"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
@@ -20,30 +20,6 @@ export function Logo() {
         strokeWidth="6"
         strokeLinecap="round"
       />
-      <g>
-        <text
-          x="82"
-          y="18"
-          fontFamily="Inter, sans-serif"
-          fontSize="14"
-          fontWeight="bold"
-          letterSpacing="0.05em"
-          fill="hsl(var(--primary))"
-        >
-          NUSHIFT
-        </text>
-        <text
-          x="82"
-          y="34"
-          fontFamily="Inter, sans-serif"
-          fontSize="14"
-          fontWeight="bold"
-          letterSpacing="0.05em"
-          fill="hsl(var(--accent))"
-        >
-          CONNECT
-        </text>
-      </g>
     </svg>
   );
 }
