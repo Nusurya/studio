@@ -12,4 +12,6 @@ export interface PodcastSubmission {
   status: SubmissionStatus;
   rejectionReason?: string;
   submissionDate: string;
+  category: string;
+  audioUrl: string;
 }

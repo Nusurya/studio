@@ -1,6 +1,5 @@
 import { Badge } from "@/components/ui/badge";
 import type { SubmissionStatus } from "@/lib/types";
-import { Clock, CheckCircle, XCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type StatusBadgeProps = {
@@ -11,21 +10,15 @@ export function StatusBadge({ status }: StatusBadgeProps) {
   const statusConfig = {
     pending: {
       label: "Pending",
-      icon: <Clock className="h-3 w-3" />,
-      variant: "secondary" as const,
-      className: "text-secondary-foreground",
+      className: "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700",
     },
     approved: {
       label: "Approved",
-      icon: <CheckCircle className="h-3 w-3" />,
-      variant: "default" as const,
-      className: "bg-accent text-accent-foreground hover:bg-accent/80",
+      className: "bg-green-100 text-green-700 hover:bg-green-200 dark:bg-green-900/50 dark:text-green-300 dark:hover:bg-green-900",
     },
     rejected: {
       label: "Rejected",
-      icon: <XCircle className="h-3 w-3" />,
-      variant: "destructive" as const,
-      className: "",
+      className: "bg-red-100 text-red-700 hover:bg-red-200 dark:bg-red-900/50 dark:text-red-300 dark:hover:bg-red-900",
     },
   };
 
@@ -33,11 +26,13 @@ export function StatusBadge({ status }: StatusBadgeProps) {
 
   return (
     <Badge
-      variant={config.variant}
-      className={cn("gap-1.5 font-medium capitalize", config.className)}
+      variant="outline"
+      className={cn(
+        "border-transparent capitalize font-semibold text-xs",
+        config.className
+      )}
     >
-      {config.icon}
-      <span>{config.label}</span>
+      {config.label}
     </Badge>
   );
 }
