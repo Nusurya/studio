@@ -13,13 +13,16 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Logo } from '@/components/logo';
+import { moderators } from '@/lib/data';
 
 export default function LoginPage() {
   const router = useRouter();
 
   const handleLogin = (event: React.FormEvent) => {
     event.preventDefault();
-    router.push('/dashboard');
+    // For this demo, we'll log in as the first panelist in our data.
+    const defaultModeratorId = moderators[0]?.id || 'mod1';
+    router.push(`/dashboard?moderatorId=${defaultModeratorId}`);
   };
 
   return (

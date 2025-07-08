@@ -1,7 +1,8 @@
 import { Logo } from "./logo";
 import { UserNav } from "./user-nav";
+import type { Moderator } from "@/lib/types";
 
-export function Header() {
+export function Header({ moderator }: { moderator: Moderator | null }) {
   return (
     <header className="bg-card border-b sticky top-0 z-10">
       <div className="container mx-auto px-4 md:px-8">
@@ -14,7 +15,7 @@ export function Header() {
               Admin Panel - Podcast Review
             </h1>
           </div>
-          <UserNav />
+          <UserNav moderator={moderator} />
         </div>
       </div>
     </header>

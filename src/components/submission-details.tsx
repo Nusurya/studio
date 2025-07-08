@@ -196,7 +196,7 @@ export default function SubmissionDetails({
               className="w-full"
             >
               <Undo2 />
-              Reconsider
+              Re-Review
             </Button>
           </CardFooter>
         )}

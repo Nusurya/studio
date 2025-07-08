@@ -13,31 +13,43 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useRouter } from "next/navigation";
 import { LogOut, User, LifeBuoy } from "lucide-react";
+import type { Moderator } from "@/lib/types";
 
-export function UserNav() {
+export function UserNav({ moderator }: { moderator: Moderator | null }) {
   const router = useRouter();
 
   const handleLogout = () => {
     router.push("/");
   };
 
+  const name = moderator?.name ?? "Panelist";
+  const email = moderator
+    ? `${moderator.name.split(" ").join(".").toLowerCase()}@example.com`
+    : "panelist@example.com";
+  const FallbackContent = moderator ? (
+    moderator.name
+      .split(" ")
+      .map((n) => n[0])
+      .join("")
+  ) : (
+    <User />
+  );
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-10 w-10 rounded-full">
           <Avatar className="h-10 w-10">
-            <AvatarFallback>
-              <User />
-            </AvatarFallback>
+            <AvatarFallback>{FallbackContent}</AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="end" forceMount>
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
-            <p className="text-sm font-medium leading-none">Alex Ray</p>
+            <p className="text-sm font-medium leading-none">{name}</p>
             <p className="text-xs leading-none text-muted-foreground">
-              alex@example.com
+              {email}
             </p>
           </div>
         </DropdownMenuLabel>

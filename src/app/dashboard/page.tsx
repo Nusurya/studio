@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { Header } from "@/components/header";
 import { submissions as initialSubmissions, moderators } from "@/lib/data";
 import type {
@@ -49,34 +50,35 @@ export default function DashboardPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
   const [hasMounted, setHasMounted] = useState(false);
+
+  const searchParams = useSearchParams();
+  const moderatorIdFromQuery = searchParams.get("moderatorId");
   const [currentModeratorId, setCurrentModeratorId] = useState<string>("all");
+  const [currentModerator, setCurrentModerator] =
+    useState<Moderator | null>(null);
 
   useEffect(() => {
     setHasMounted(true);
-  }, []);
+    if (moderatorIdFromQuery) {
+      setCurrentModeratorId(moderatorIdFromQuery);
+    }
+  }, [moderatorIdFromQuery]);
+
+  useEffect(() => {
+    const mod = moderators.find((m) => m.id === currentModeratorId) || null;
+    setCurrentModerator(mod);
+  }, [currentModeratorId]);
 
   const handleUpdateStatus = (
     id: string,
     status: SubmissionStatus,
     reason?: string
   ) => {
-    if (currentModeratorId === "all") {
+    if (!currentModerator) {
       toast({
         title: "Action Required",
         description:
           "Please select a panelist from the dropdown to take an action.",
-        variant: "destructive",
-      });
-      return;
-    }
-    const currentModerator = moderators.find(
-      (mod) => mod.id === currentModeratorId
-    );
-
-    if (!currentModerator) {
-      toast({
-        title: "Error",
-        description: "Invalid panelist selected.",
         variant: "destructive",
       });
       return;
@@ -166,7 +168,7 @@ export default function DashboardPage() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
+      <Header moderator={currentModerator} />
       <main className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-8 p-4 md:p-8 container mx-auto">
         <div className="lg:col-span-2">
           <Card>
@@ -316,7 +318,7 @@ export default function DashboardPage() {
               key={selectedSubmission.id}
               submission={selectedSubmission}
               onUpdateStatus={handleUpdateStatus}
-              isActionable={currentModeratorId !== "all"}
+              isActionable={!!currentModerator}
             />
           ) : (
             <Card className="h-full flex items-center justify-center">
