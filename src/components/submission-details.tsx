@@ -191,9 +191,9 @@ export default function SubmissionDetails({
           <CardFooter className="grid grid-cols-1 pt-6">
             <Button
               onClick={handleReReview}
-              variant="secondary"
+              variant="ghost"
               disabled={!isActionable}
-              className="w-full"
+              className="w-full border border-yellow-300 bg-yellow-100 text-yellow-800 hover:bg-yellow-200 hover:text-yellow-900 dark:border-yellow-700 dark:bg-yellow-900/50 dark:text-yellow-300 dark:hover:bg-yellow-900 dark:hover:text-yellow-200"
             >
               <Undo2 />
               Re-Review
